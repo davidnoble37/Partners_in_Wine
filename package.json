@@ -1,0 +1,19 @@
+{
+  "name": "partners_in_wine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattwestenhaver/Partners_in_Wine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattwestenhaver/Partners_in_Wine/issues"
+  },
+  "homepage": "https://github.com/mattwestenhaver/Partners_in_Wine#readme"
+}
