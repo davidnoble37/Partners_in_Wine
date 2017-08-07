@@ -2,6 +2,7 @@ const
   express = require('express'),
   app = express(),
   mongoose = require('mongoose'),
+  cors = require('cors')
   bodyParser = require('body-parser'),
   jwt = require('jsonwebtoken'),
   dotenv = require('dotenv').load({silent: true}),
@@ -15,6 +16,7 @@ mongoose.connect(mongoUrl, (err) => {
   console.log(err || "Connected to MongoDB.")
 })
 
+app.use(cors())
 app.use(logger('dev'))
 app.use(bodyParser.json())
 
@@ -36,9 +38,9 @@ app.get('/users', (req, res) => {
 
 // create
 app.post('/users', (req, res) => {
-  User.create(req.body, function(err, newUser){
+  User.create(req.body, function(err, user){
     if(err) return console.log(err)
-    res.send(newUser)
+    res.json({success: true, message: "User created.", user})
   })
 })
 

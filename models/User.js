@@ -1,6 +1,6 @@
 const
   mongoose = require('mongoose'),
-  bcypt = require('bcrypt-nodejs'),
+  bcrypt = require('bcrypt-nodejs'),
 
   userSchema = new mongoose.Schema({
     name: {type: String, require: true},
@@ -8,7 +8,7 @@ const
     password: {type: String, select: false},
     // with {select: false} option set, passwords will not be included
     // in find queries by default:
-    zipcode:{type: String, require: true},
+    zipcode:{type: Number, require: true},
     favoriteWines: [],
     favoriteCheeses: []
   })
