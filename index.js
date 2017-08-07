@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 
 
 app.get('/', (req, res) => {
-  res.json({message: "this is the API root page"})
+  res.json({message: "this is the APIs root page"})
 })
 
 app.listen(port, (err) => {
