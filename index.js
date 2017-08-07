@@ -108,10 +108,7 @@ app.delete('/comments/:id', function(req, res){
   })
 })
 
-
-
-
-
+// turn on server
 app.listen(port, (err) => {
   console.log(err || `Server running on ${port}.`)
 })
