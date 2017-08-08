@@ -68,6 +68,18 @@ app.delete('/users/:id', function(req, res){
   })
 })
 
+app.post('/authenticate', (req, res) => {
+  User.findOne({email: req.body.email}, '+password', (err, user) => {
+    if(!user || (user && !user.validPassword(req.body.password))) {
+      return res.json({success: false, message: "Incorrect email or password."})
+    }
+    const userData = user.toObject()
+    delete userData.password
+    const token = jwt.sign(userData, process.env.SECRET)
+    res.json({success: true, message: "Logged in successfully.", token})
+  })
+})
+
 // ***COMMENT ROUTES***
 
 // index
