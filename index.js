@@ -124,7 +124,7 @@ app.delete('/comments/:id', function(req, res){
 })
 
 app.get('/wines', (req, res) => {
-  const apiUrl = `http://api.snooth.com/wines/?akey=${process.env.API_KEY}&q=${req.query.type}&xp=${req.query.xp}`
+  const apiUrl = `http://api.snooth.com/wines/?akey=${process.env.API_KEY}&s=sr&q=${req.query.type}&xp=${req.query.xp}&mp=${req.query.xp/2.5}`
   // server will make snooth api request:
   request(apiUrl, function(error, response, body) {
     // server will respond to client with data from snooth api
