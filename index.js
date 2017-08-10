@@ -10,7 +10,8 @@ const
   mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/wine',
   port = process.env.PORT || 3001,
   User = require('./models/User.js'),
-  Comment = require('./models/Comment.js')
+  Comment = require('./models/Comment.js'),
+  request = require('request')
 
 mongoose.connect(mongoUrl, (err) => {
   console.log(err || "Connected to MongoDB.")
@@ -119,6 +120,15 @@ app.delete('/comments/:id', function(req, res){
   Comment.findByIdAndRemove(req.params.id, function(err, deletedComment){
     if(err) return console.log(err)
     res.json({message: "Comment deleted", deletedComment})
+  })
+})
+
+app.get('/wines', (req, res) => {
+  const apiUrl = `http://api.snooth.com/wines/?akey=${process.env.API_KEY}&q=${req.query.type}&xp=${req.query.xp}`
+  // server will make snooth api request:
+  request(apiUrl, function(error, response, body) {
+    // server will respond to client with data from snooth api
+    res.json(JSON.parse(body))
   })
 })
 
